@@ -1,5 +1,5 @@
 
-		<form name="createListingForm" ng-submit="signup()" novalidate>
+		<form name="createListingForm" ng-submit="create()" novalidate>
 			<div>
 				<label for="streetName">Street Name</label>
 				<input name="text" class="form-control" type="text" id="streetName" placeholder="Street Name" ng-model="streetName">
@@ -22,7 +22,7 @@
 	        </div>
 	        <div class="form-group">
 		        <label for="state">Select State:</label>
-		        <select class="form-control" id="state">
+		        <select class="form-control" id="state" ng-model="state">
 					<option value="AL">Alabama</option>
 					<option value="AK">Alaska</option>
 					<option value="AZ">Arizona</option>
@@ -114,8 +114,8 @@
 	        </div>
 	        <div>
 	        finished basement
-	        	<label class="radio-inline" for="finishedBasement"><input name="finishedBasement"  type="radio" ng-model="finishedBasement">True</label>
-	        	<label class="radio-inline" for="finishedBasement"><input name="finishedBasement" type="radio" ng-model="finishedBasement" checked>false</label>
+	        	<label class="radio-inline" for="finishedBasement"><input name="finishedBasement"  type="radio" ng-model="finishedBasement" ng-model="finishedBasement">True</label>
+	        	<label class="radio-inline" for="finishedBasement"><input name="finishedBasement" type="radio" ng-model="finishedBasement" ng-model="finishedBasement" checked>false</label>
 	        </div>
 	        <div>
 	        	<label for="price">price</label>
@@ -123,8 +123,8 @@
 	        </div>
 	        <div>
 	        isActive
-	        <label class="radio-inline"><input type="radio" name="isActive" ng-model="isActive" checked>True</label>
-			<label class="radio-inline"><input type="radio" name="isActive" ng-model="isActive">false</label>
+	        <label class="radio-inline"><input type="radio" name="isActive" ng-model="isActive" ng-model="isActive" checked>True</label>
+			<label class="radio-inline"><input type="radio" name="isActive" ng-model="isActive" ng-model="isActive" >false</label>
 	        </div>
 	        <button type="submit" class="btn btn-primary">Create!</button>
 		</form>
