@@ -8,7 +8,7 @@
  * Controller of the clientApp
  */
 angular.module('clientApp')
-.controller('createListingCtrl', function ($scope, $http, $log) {
+.controller('createListingCtrl', function ($scope, $http, $log, alertService) {
 	
 	var d = new Date();
 	d = d.getFullYear() + "-"
@@ -42,8 +42,22 @@ angular.module('clientApp')
     };
 
     $http.post('app/createListing', payload)
-        .then(function(success, data){
-          $log.debug(data);
-        });
+    	.error(function(data, status){
+    		if(status === 400){
+    			angular.forEach(data, function(value, key){
+    				
+    				if(key === 'street_name' || key === 'street_number'){
+    					alertService.add('danger', key + ':' + value);
+    				}else{
+    					alertService.add('danger', value.message);
+    				}
+    				 
+    				alertService.add('danger', value.message);
+    			});
+    		}
+    		if(status === 500) {
+    			alertService.add('danger', 'Internal Server Error!');
+    		}
+    	});
   };
 });
