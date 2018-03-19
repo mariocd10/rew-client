@@ -9,8 +9,15 @@
  */
 angular.module('clientApp')
 .controller('createListingCtrl', function ($scope, $http, $log) {
-	var dt = new Date();
-	var utcDate = dt.toUTCString();
+	
+	var d = new Date();
+	d = d.getFullYear() + "-"
+		+ ('0' + (d.getMonth() + 1)).slice(-2) 
+		+ "-" + ('0' + d.getDate()).slice(-2) 
+		+ " " + ('0' + d.getHours()).slice(-2) 
+		+ ":" + ('0' + d.getMinutes()).slice(-2) 
+		+ ":" + ('0' + d.getSeconds()).slice(-2);
+	
 	$scope.create = function() {
     var payload = {
       street_name 	: $scope.streetName,
@@ -23,15 +30,15 @@ angular.module('clientApp')
       description 	: $scope.description,
       bedrooms 		: $scope.bedrooms,
       bathrooms 	: $scope.bathrooms,
-      home_square_feet 		: $scope.homeSqft,
-      land_square_feet 		: $scope.landSqft,
+      home_square_feet 	: $scope.homeSqft,
+      land_square_feet 	: $scope.landSqft,
       sale_type 		: $scope.saleType,
       year_built 		: $scope.yrBuilt,
-      market_date 	: $scope.utcDate,
-      property_type 		: $scope.propType,
+      property_type 	: $scope.propType,
       finished_basement : $scope.finishedBasement,
-      price 		: $scope.price,
-      is_active 		: $scope.isActive
+      price 			: $scope.price,
+      is_active 		: $scope.isActive,
+      market_date		: d
     };
 
     $http.post('app/createListing', payload)
