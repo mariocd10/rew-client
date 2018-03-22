@@ -42,21 +42,25 @@ angular.module('clientApp')
     };
 
     $http.post('app/createListing', payload)
-    	.error(function(data, status){
-    		if(status === 400){
-    			angular.forEach(data, function(value, key){
-    				
-    				if(key === 'street_name' || key === 'street_number'){
-    					alertService.add('danger', key + ':' + value);
-    				}else{
-    					alertService.add('danger', value.message);
+    	.then(function(response){
+    		$log.debug(response.data);
+    	})
+    	.catch(function(e){
+    		console.log(e.data);
+    		if(e.status === 400){
+    			angular.forEach(e.data, function(value, key){
+    				if(key === 'street_name' || key === 'street_number' || key === 'street_type' || key === 'city' || key === 'state' ||
+    						key === 'zip_code' || key === 'description' || key === 'bedrooms' ||key === 'bathrooms' || key === 'home_square_feet' ||
+    						key === 'land_square_feet' || key === 'sale_type' || key === 'year_built' || key === 'property_type' || key === 'price'){
+    					alertService.add('danger', key+ ':' + value);
     				}
-    				 
-    				alertService.add('danger', value.message);
-    			});
+    				else{
+            			alertService.add('danger', value[0]);
+    				}
+        		});
     		}
-    		if(status === 500) {
-    			alertService.add('danger', 'Internal Server Error!');
+    		if(e.status === 500){
+    			alertService.add('error', 'Internal Server Error!');
     		}
     	});
   };
