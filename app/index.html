@@ -52,7 +52,7 @@
 	
     <div class="container">
     	<div ng-controller="alertsCtrl">
-			<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">{{alert.msg}}</alert>    	
+			<div uib-alert ng-class="'alert-'+(alert.type)" ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">{{alert.msg}}</div>    	
     	</div>
     	<div ng-view=""></div>
     </div>
@@ -95,8 +95,8 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/createListing.js"></script>
-        <script src="scripts/services/alerts.js"></script>
         <script src="scripts/controllers/alertsCtrl.js"></script>
+        <script src="scripts/services/alerts.js"></script>
         <!-- endbuild -->
 </body>
 </html>
