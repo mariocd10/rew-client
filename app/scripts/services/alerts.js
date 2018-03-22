@@ -7,9 +7,9 @@
  * # alerts
  * Service in the clientApp.
  */
-angular.module('clientApp').service('alertService', function($timeout) {
+angular.module('clientApp').factory('alertService', function($timeout) {
 
-	var ALERT_TIMEOUT = 5000;
+	var ALERT_TIMEOUT = 10000;
 
 	function add(type, msg, timeout) {
 
