@@ -9,12 +9,29 @@
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker3.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+    
+     <style>
+            .my-drop-zone { border: dotted 3px lightgray; }
+            .nv-file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
+            .another-file-over-class { border: dotted 3px green; }
+
+            html, body { height: 100%; }
+
+            canvas {
+                background-color: #f3f3f3;
+                -webkit-box-shadow: 3px 3px 3px 0 #e3e3e3;
+                -moz-box-shadow: 3px 3px 3px 0 #e3e3e3;
+                box-shadow: 3px 3px 3px 0 #e3e3e3;
+                border: 1px solid #c3c3c3;
+                height: 100px;
+                margin: 6px 0 0 6px;
+            }
+        </style>
   </head>
   <body ng-app="clientApp">
     <!--[if lte IE 8]>
@@ -82,24 +99,16 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+    <script src="bower_components/angular-file-upload/dist/angular-file-upload.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script text="text/javascript">
-	        // When the document is ready
-	        $(document).ready(function () {
-	            $('#yrBuilt').datepicker({
-	                minViewMode: 'years',
-	                autoclose: true,
-	                 format: 'yyyy'
-	            });  
-	        });
-        </script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/createListing.js"></script>
+        <script src="scripts/controllers/uploadImgCtrl.js"></script>
+        <script src="scripts/directives/ngthumb.js"></script>
         <!-- endbuild -->
 </body>
 </html>
